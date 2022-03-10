@@ -1,8 +1,9 @@
 <?php
 
-namespace Nagy\LaravelRating\Models;
+namespace AbdullahFaqeir\LaravelRating\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Rating extends Model
 {
@@ -10,12 +11,12 @@ class Rating extends Model
 
     protected $table = 'ratings';
 
-    public function model()
+    public function model(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function rateable()
+    public function rateable(): MorphTo
     {
         return $this->morphTo();
     }

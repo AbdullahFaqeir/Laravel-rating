@@ -1,8 +1,8 @@
 <?php
 
-namespace Nagy\LaravelRating\Tests;
+namespace AbdullahFaqeir\LaravelRating\Tests;
 
-use Nagy\LaravelRating\LaravelRatingServiceProvider;
+use AbdullahFaqeir\LaravelRating\LaravelRatingServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -12,20 +12,20 @@ class TestCase extends Orchestra
         parent::setUp();
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LaravelRatingServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
 
 

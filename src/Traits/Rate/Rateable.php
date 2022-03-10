@@ -1,23 +1,31 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits\Rate;
+namespace AbdullahFaqeir\LaravelRating\Traits\Rate;
 
-use Nagy\LaravelRating\Models\Rating;
+use AbdullahFaqeir\LaravelRating\Models\Rating;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ * @property \Illuminate\Support\Collection<int, Rating> $ratings
+ */
 trait Rateable
 {
-    public function ratings()
+    public function ratings(): MorphMany
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
 
     public function ratingsAvg()
     {
-        return $this->ratings()->avg('value');
+        return $this->ratings()
+                    ->where('type', 'rate')
+                    ->avg('value');
     }
 
-    public function ratingsCount()
+    public function ratingsCount(): int
     {
-        return $this->ratings()->count();
+        return $this->ratings()
+                    ->count();
     }
 }

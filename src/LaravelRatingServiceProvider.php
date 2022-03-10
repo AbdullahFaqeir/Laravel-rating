@@ -1,6 +1,6 @@
 <?php
 
-namespace Nagy\LaravelRating;
+namespace AbdullahFaqeir\LaravelRating;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -11,7 +11,7 @@ class LaravelRatingServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__.'/../database/migrations/create_ratings_table.php.stub' => app()->basePath().'/database/migrations/'.date('Y_m_d_His', time() + 1).'_create_ratings_table.php',
@@ -24,7 +24,7 @@ class LaravelRatingServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind('laravelRating', function () {
             return new LaravelRating();

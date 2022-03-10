@@ -1,48 +1,59 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits\Like;
+namespace AbdullahFaqeir\LaravelRating\Traits\Like;
 
-use Nagy\LaravelRating\LaravelRating;
-use Nagy\LaravelRating\LaravelRatingFacade;
-use Nagy\LaravelRating\Models\Rating;
+use Illuminate\Support\Collection;
+use AbdullahFaqeir\LaravelRating\LaravelRating;
+use AbdullahFaqeir\LaravelRating\LaravelRatingFacade;
+use AbdullahFaqeir\LaravelRating\Models\Rating;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ * @property Collection<int, Rating> $likes
+ */
 trait CanLike
 {
-    public function likes()
+    public function likes(): MorphMany
     {
-        return $this->morphMany(Rating::class, 'model')->where('type', LaravelRating::TYPE_LIKE);
+        return $this->morphMany(Rating::class, 'model')
+                    ->where('type', LaravelRating::TYPE_LIKE);
     }
 
-    public function like($model)
+    public function like($model): Rating
     {
         return LaravelRatingFacade::rate($this, $model, 1, LaravelRating::TYPE_LIKE);
     }
 
-    public function dislike($model)
+    public function dislike($model): Rating
     {
         return LaravelRatingFacade::rate($this, $model, 0, LaravelRating::TYPE_LIKE);
     }
 
-    public function isLiked($model)
+    public function isLiked($model): bool
     {
         return LaravelRatingFacade::isRated($this, $model, LaravelRating::TYPE_LIKE);
     }
 
-    public function liked()
+    public function liked(): Collection
     {
-        $liked = $this->likes()->where('value', 1)->get();
+        $liked = $this->likes()
+                      ->where('value', 1)
+                      ->get();
 
         return LaravelRatingFacade::resolveRatedItems($liked);
     }
 
-    public function disliked()
+    public function disliked(): Collection
     {
-        $disliked = $this->likes()->where('value', 0)->get();
+        $disliked = $this->likes()
+                         ->where('value', 0)
+                         ->get();
 
         return LaravelRatingFacade::resolveRatedItems($disliked);
     }
 
-    public function likedDisliked()
+    public function likedDisliked(): Collection
     {
         return LaravelRatingFacade::resolveRatedItems($this->likes);
     }

@@ -1,11 +1,11 @@
 {
-    "name": "nagy/laravel-rating",
-    "description": "manage rating column for elqouent models",
+    "name": "abdullahfaqeir/laravel-rating",
+    "description": "Manage rating column for elqouent models",
     "keywords": [
         "nagy",
         "laravel-rating"
     ],
-    "homepage": "https://github.com/nagy/laravel-rating",
+    "homepage": "https://github.com/AbdullahFaqeir/Laravel-rating",
     "license": "MIT",
     "authors": [
         {
@@ -17,26 +17,31 @@
             "name": "Mohamed Nagy",
             "email": "mohamed.n.haleem@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Abdullah Al-Faqeir",
+            "email": "abdullah@devloops.net",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0|^7.3",
-        "illuminate/contracts": "^8.0|^7.0|^6.0"
+        "php": "^8.0",
+        "illuminate/contracts": "^9.0|^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0|^5.0|^4.0",
+        "orchestra/testbench": "^6.0|^7.0",
         "phpunit/phpunit": "^9.3|^8.0",
         "vimeo/psalm": "^4.4"
     },
     "autoload": {
         "psr-4": {
-            "Nagy\\LaravelRating\\": "src",
-            "Nagy\\LaravelRating\\Database\\Factories\\": "database/factories"
+            "AbdullahFaqeir\\LaravelRating\\": "src",
+            "AbdullahFaqeir\\LaravelRating\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nagy\\LaravelRating\\Tests\\": "tests"
+            "AbdullahFaqeir\\LaravelRating\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,10 +55,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nagy\\LaravelRating\\LaravelRatingServiceProvider"
+                "AbdullahFaqeir\\LaravelRating\\LaravelRatingServiceProvider"
             ],
             "aliases": {
-                "LaravelRatingFacade": "Nagy\\LaravelRating\\LaravelRatingFacade"
+                "LaravelRatingFacade": "AbdullahFaqeir\\LaravelRating\\LaravelRatingFacade"
             }
         }
     },

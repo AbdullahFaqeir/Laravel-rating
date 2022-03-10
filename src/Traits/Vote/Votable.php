@@ -1,32 +1,42 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits\Vote;
+namespace AbdullahFaqeir\LaravelRating\Traits\Vote;
 
-use Nagy\LaravelRating\Models\Rating;
+use AbdullahFaqeir\LaravelRating\Models\Rating;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ * @property \Illuminate\Support\Collection<int, Rating> $votes
+ */
 trait Votable
 {
-    public function votes()
+    public function votes(): MorphMany
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
 
-    public function totalVotesCount()
+    public function totalVotesCount(): int
     {
-        return $this->votes()->count();
+        return $this->votes()
+                    ->count();
     }
 
-    public function upVotesCount()
+    public function upVotesCount(): int
     {
-        return $this->votes()->where('value', 1)->count();
+        return $this->votes()
+                    ->where('value', 1)
+                    ->count();
     }
 
-    public function downVotesCount()
+    public function downVotesCount(): int
     {
-        return $this->votes()->where('value', 0)->count();
+        return $this->votes()
+                    ->where('value', 0)
+                    ->count();
     }
 
-    public function votesDiff()
+    public function votesDiff(): int
     {
         return $this->upVotesCount() - $this->downVotesCount();
     }

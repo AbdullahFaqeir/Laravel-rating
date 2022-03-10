@@ -1,11 +1,11 @@
 <?php
 
-namespace Nagy\LaravelRating\Tests\Models;
+namespace AbdullahFaqeir\LaravelRating\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Nagy\LaravelRating\Traits\Like\CanLike;
-use Nagy\LaravelRating\Traits\Rate\CanRate;
-use Nagy\LaravelRating\Traits\Vote\CanVote;
+use AbdullahFaqeir\LaravelRating\Traits\Like\CanLike;
+use AbdullahFaqeir\LaravelRating\Traits\Rate\CanRate;
+use AbdullahFaqeir\LaravelRating\Traits\Vote\CanVote;
 
 class User extends Model
 {

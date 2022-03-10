@@ -1,28 +1,38 @@
 <?php
 
-namespace Nagy\LaravelRating\Traits\Like;
+namespace AbdullahFaqeir\LaravelRating\Traits\Like;
 
-use Nagy\LaravelRating\Models\Rating;
+use AbdullahFaqeir\LaravelRating\Models\Rating;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ * @property \Illuminate\Support\Collection<int, Rating> $likes
+ */
 trait Likeable
 {
-    public function likes()
+    public function likes(): MorphMany
     {
         return $this->morphMany(Rating::class, 'rateable');
     }
 
-    public function likesDislikesCount()
+    public function likesDislikesCount(): int
     {
-        return $this->likes()->count();
+        return $this->likes()
+                    ->count();
     }
 
-    public function likesCount()
+    public function likesCount(): int
     {
-        return $this->likes()->where('value', 1)->count();
+        return $this->likes()
+                    ->where('value', 1)
+                    ->count();
     }
 
-    public function dislikesCount()
+    public function dislikesCount(): int
     {
-        return $this->likes()->where('value', 0)->count();
+        return $this->likes()
+                    ->where('value', 0)
+                    ->count();
     }
 }

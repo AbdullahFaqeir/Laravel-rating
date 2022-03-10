@@ -7,22 +7,22 @@
 </p>
 
 # New Maintainer
-This package now maintined by [Ahmed Nagi](https://twitter.com/nagiworks)
+This package is an updated and maintained fork of [Laravel-rating](https://github.com/mohamednagy/Laravel-rating)
 
 # Laravel-Ratings
 Laravel package that allows you to **rate,  like & dislike or vote up & down** your models with a simple and clear way. <br>
 *If you see this packge can help, Don't skimp on me with a star :)*
 
-* [Install](https://github.com/mohamednagy/Laravel-rating#install)
-* <img src="https://image.ibb.co/eGKPgw/if_019_Star_2792947.png" width=20> [Rating](https://github.com/mohamednagy/Laravel-rating#rating)
-* <img src="./media/like-dislike.png" width=25> [Like & Dislike](https://github.com/mohamednagy/Laravel-rating#like--dislike)
-* <img src="https://image.ibb.co/hgco8b/if_chevron_up_173180.png" width=20> [Voting](https://github.com/mohamednagy/Laravel-rating#voting)
+* [Install](https://github.com/AbdullahFaqeir/Laravel-rating#install)
+* <img src="https://image.ibb.co/eGKPgw/if_019_Star_2792947.png" width=20> [Rating](https://github.com/AbdullahFaqeir/Laravel-rating#rating)
+* <img src="./media/like-dislike.png" width=25> [Like & Dislike](https://github.com/AbdullahFaqeir/Laravel-rating#like--dislike)
+* <img src="https://image.ibb.co/hgco8b/if_chevron_up_173180.png" width=20> [Voting](https://github.com/AbdullahFaqeir/Laravel-rating#voting)
 
 
 ## Rating
 include `CanRate` trait into your user model to apply rating functions
 ```php
-use Nagy\LaravelRating\Traits\Rate\CanRate;
+use AbdullahFaqeir\LaravelRating\Traits\Rate\CanRate;
 
 class User extends Model
 {
@@ -30,7 +30,7 @@ class User extends Model
 ```
 include `Rateable` trait to your model that will be rateable
 ```php
-use Nagy\LaravelRating\Traits\Rate\Rateable;
+use AbdullahFaqeir\LaravelRating\Traits\Rate\Rateable;
 
 class Post extends Model
 {
@@ -70,7 +70,7 @@ $user->rated(); // returns a collection of rated models
 ## Voting
 include `CanVote` trait into your user model to apply rating functionalties
 ```php
-use Nagy\LaravelRating\Traits\Vote\CanVote;
+use AbdullahFaqeir\LaravelRating\Traits\Vote\CanVote;
 
 class User extends Model
 {
@@ -78,7 +78,7 @@ class User extends Model
 ```
 include `Votable` trait to your model that will be votable
 ```php
-use Nagy\LaravelRating\Traits\Vote\Votable;
+use AbdullahFaqeir\LaravelRating\Traits\Vote\Votable;
 
 class Post extends Model
 {
@@ -123,7 +123,7 @@ $user->voted(); // returns a collection of total voted models;
 ## Like & Dislike
 include `CanLike` trait into your user model to apply like and dislike functionalties
 ```php
-use Nagy\LaravelRating\Traits\Like\CanLike;
+use AbdullahFaqeir\LaravelRating\Traits\Like\CanLike;
 
 class User extends Model
 {
@@ -131,7 +131,7 @@ class User extends Model
 ```
 include `Likeable` trait to your model that will be likeable
 ```php
-use Nagy\LaravelRating\Traits\Like\Likeable;
+use AbdullahFaqeir\LaravelRating\Traits\Like\Likeable;
 
 class Post extends Model
 {
@@ -172,29 +172,24 @@ $user->likedDisliked(); // return a collection of liked and disliked models;
 
 # Install
 
-for laravel 8.* , 7.* , 6.*
+for laravel 9.* , 8.*
 
 ```bash
-composer require nagy/laravel-rating
+composer require abdullahfaqeir/laravel-rating
 ```
 
-for laravel 5.*
-
-```bash
-composer require nagy/laravel-rating:^1.2
-```
 
 in your config/app.php
 
 ```php
     'providers' => [
         ...
-        Nagy\LaravelRating\LaravelRatingServiceProvider::class
+        AbdullahFaqeir\LaravelRating\LaravelRatingServiceProvider::class
     ],
 
     'aliases' => [
         ...
-        "LaravelRating" => \Nagy\LaravelRating\LaravelRatingFacade::class,
+        "LaravelRating" => \AbdullahFaqeir\LaravelRating\LaravelRatingFacade::class,
     ]
 ```
 
